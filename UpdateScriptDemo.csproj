@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot/js/**" />
+  </ItemGroup>
+
   <Target Name="CompileUpdateScript" 
           BeforeTargets="BeforeBuild">
     <Copy SourceFiles="wwwroot/ups/site.ups"

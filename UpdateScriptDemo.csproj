@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <Target Name="CompileUpdateScript" 
+          BeforeTargets="BeforeBuild">
+    <Copy SourceFiles="wwwroot/ups/site.ups"
+          DestinationFiles="wwwroot/js/site.js" />
+  </Target>
+
 </Project>

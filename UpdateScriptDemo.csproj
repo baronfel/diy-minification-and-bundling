@@ -7,19 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <UpdatescriptSourceFile Include="wwwroot/ups/**/*.ups" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot/js/**" />
     <Clean Include="wwwroot/js/**/*.js" />
   </ItemGroup>
 
   <Target Name="CompileUpdateScript"
           BeforeTargets="BeforeBuild"
-          Inputs="wwwroot/ups/site.ups"
-          Outputs="wwwroot/js/site.js">
-    <Copy SourceFiles="wwwroot/ups/site.ups"
-          DestinationFiles="wwwroot/js/site.js" />
+          Inputs="@(UpdatescriptSourceFile)"
+          Outputs="@(UpdatescriptSourceFile -> 'wwwroot/js/%(Filename).js')">
+    <Copy SourceFiles="@(UpdatescriptSourceFile)"
+          DestinationFiles="@(UpdatescriptSourceFile -> 'wwwroot/js/%(Filename).js')" />
 
     <ItemGroup>
-      <Content Include="wwwroot/js/site.js" />
+      <Content Include="@(UpdatescriptSourceFile -> 'wwwroot/js/%(Filename).js')" />
     </ItemGroup>
   </Target>
 

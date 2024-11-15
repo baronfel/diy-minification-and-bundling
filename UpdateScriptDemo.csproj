@@ -11,8 +11,10 @@
     <Clean Include="wwwroot/js/**/*.js" />
   </ItemGroup>
 
-  <Target Name="CompileUpdateScript" 
-          BeforeTargets="BeforeBuild">
+  <Target Name="CompileUpdateScript"
+          BeforeTargets="BeforeBuild"
+          Inputs="wwwroot/ups/site.ups"
+          Outputs="wwwroot/js/site.js">
     <Copy SourceFiles="wwwroot/ups/site.ups"
           DestinationFiles="wwwroot/js/site.js" />
 
